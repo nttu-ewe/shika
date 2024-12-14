@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>彈幕範例</title>
+    <title>彈幕</title>
     <style>
         #video-container {
             position: relative;
@@ -35,27 +35,23 @@
         const sendButton = document.getElementById('send-button');
         const danmakuInput = document.getElementById('danmaku-input');
 
-        // 發送彈幕
+        
         sendButton.addEventListener('click', () => {
             const text = danmakuInput.value;
             if (!text) return;
 
-            // 創建彈幕元素
             const danmaku = document.createElement('div');
             danmaku.classList.add('danmaku');
             danmaku.innerText = text;
-
-            // 設定隨機高度
+          
             const randomTop = Math.random() * (videoContainer.offsetHeight - 20);
             danmaku.style.top = `${randomTop}px`;
 
-            // 添加到容器
             videoContainer.appendChild(danmaku);
 
-            // 移除彈幕（超出邊界後）
             setTimeout(() => {
                 videoContainer.removeChild(danmaku);
-            }, 5000); // 與動畫持續時間同步
+            }, 5000); 
         });
     </script>
 </body>
