@@ -3,234 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>有馬佳奈介紹</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+    <title>有馬佳奈</title>
     <style>
         /* 全局样式 */
-        body {
-            font-family: 'Noto Serif TC', serif;
+        body, html {
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
+            font-size: 1em;
             color: #333;
+            background: linear-gradient(180deg, #ffe4e1, #fff);
         }
 
-        /* 顶部导航栏 */
-        .navbar {
-            background-color: #ff5773;
-            color: white;
-            padding: 10px 20px;
+        * {
+            box-sizing: border-box;
+        }
+
+        header, section {
+            margin: 20px auto;
+            max-width: 1200px;
+            padding: 20px;
+            background: rgba(255, 250, 250, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            border-bottom: 3px solid #ffc0cb;
         }
 
-        .navbar h1 {
+        header h1 {
+            font-size: 3em;
+            color: #DC143C;
             margin: 0;
-            font-size: 24px;
         }
 
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin-left: 15px;
-            font-weight: bold;
-            font-size: 16px;
+        header p {
+            font-size: 1.2em;
+            color: #666;
         }
 
-        .navbar a:hover {
-            text-decoration: underline;
+        header img {
+            width: 200px;
+            border-radius: 15px;
+            border: 3px solid #FFB6C1;
         }
 
-        /* 主要内容样式 */
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .hero {
+        section h2 {
+            font-size: 2.5em;
+            color: #FF3196;
             text-align: center;
             margin-bottom: 20px;
         }
 
-        .hero img {
-            width: 100%;
-            max-width: 600px;
-            border-radius: 8px;
-            transition: transform 0.3s;
-        }
-
-        .hero img:hover {
-            transform: scale(1.05);
-        }
-
-        .intro {
-            margin-bottom: 30px;
-            text-align: justify;
-            line-height: 1.8;
-        }
-
-        /* 卡片布局 */
-        .cards {
-            display: flex;
-            flex-wrap: wrap;
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            justify-content: center;
         }
 
-        .card {
-            background-color: #ffe4e6;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: calc(33.333% - 20px);
-            padding: 15px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card img {
+        .image-grid img {
             width: 100%;
-            border-radius: 8px;
-            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
-        .card h3 {
-            margin: 10px 0;
-            font-size: 20px;
+        .image-grid img:hover {
+            transform: scale(1.1);
         }
 
-        /* 嵌入视频 */
-        .video-container {
-            margin: 20px 0;
-            text-align: center;
+        .toggle-content {
+            display: none;
         }
 
-        .video-container iframe {
-            width: 100%;
-            max-width: 800px;
-            height: 450px;
-            border: none;
-            border-radius: 8px;
+        .toggle-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
         }
 
-        /* 按钮样式 */
-        .button-group {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .button {
+        .toggle-button {
+            display: block;
+            margin: 10px auto;
             padding: 10px 20px;
-            font-size: 16px;
-            color: white;
+            font-size: 1em;
             background-color: #ff5773;
+            color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .button:hover {
-            background-color: #ff2a4d;
-        }
-
-        /* 页脚样式 */
-        .footer {
             text-align: center;
-            margin: 20px 0;
-            font-size: 14px;
-            color: #666;
         }
 
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .card {
-                width: calc(50% - 20px);
+        .toggle-button:hover {
+            background-color: #e9445e;
+        }
+
+        .video-container {
+            text-align: center;
+        }
+
+        video {
+            width: 100%;
+            max-width: 800px;
+            border: 3px solid #ff69b4;
+            border-radius: 10px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        @media (max-width: 480px) {
-            .card {
-                width: 100%;
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            header img {
+                margin-top: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <div class="navbar">
-        <h1>有馬佳奈介紹</h1>
+    <!-- 顶部导航栏 -->
+    <header>
         <div>
-            <a href="#intro">簡介</a>
-            <a href="#cards">圖片集</a>
-            <a href="#video">相關影片</a>
+            <h1>有馬佳奈</h1>
+            <p>"我要成為你推的孩子!"</p>
         </div>
-    </div>
+        <img src="FB_IMG_1732004878589.jpg" alt="佳奈圖片">
+    </header>
 
-    <!-- 内容区域 -->
-    <div class="container">
-        <!-- 主图 -->
-        <div class="hero">
-            <img src="kana_main.jpg" alt="有馬佳奈">
+    <!-- 角色簡介 -->
+    <section>
+        <h2>角色簡介</h2>
+        <p>有馬佳奈是人氣漫畫《【我推的孩子】》中的登場角色，以天才童星之名出道，展現了她對舞台和演技的熱忱。</p>
+        <div class="image-grid">
+            <img src="99e6ccbbe1210deec94cf408ef536d61.jpg" alt="佳奈圖片1">
+            <img src="402390c916c78576bbd032304e218c34.jpg" alt="佳奈圖片2">
+            <img src="410530d4907ac727b817acda128d0dad.jpg" alt="佳奈圖片3">
+            <img src="a9fbf41d4385499c251f40bf9d20f16c.jpg" alt="佳奈圖片4">
         </div>
+    </section>
 
-        <!-- 简介 -->
-        <div id="intro" class="intro">
-            <h2>簡介</h2>
-            <p>
-                有馬佳奈（有馬かな），是一位以優秀演技和歌聲著稱的偶像角色，來自人氣漫畫《【我推的孩子】》。她曾是天才童星，
-                對舞台和表演抱有極大熱忱。無論是童年的演藝經歷還是偶像生涯，都充滿挑戰和成長。
-            </p>
-        </div>
-
-        <!-- 卡片区 -->
-        <div id="cards" class="cards">
-            <div class="card">
-                <img src="kana1.jpg" alt="有馬佳奈圖片1">
-                <h3>童年時期</h3>
-                <p>天才童星的華麗表演瞬間。</p>
-            </div>
-            <div class="card">
-                <img src="kana2.jpg" alt="有馬佳奈圖片2">
-                <h3>偶像舞台</h3>
-                <p>熱血沸騰的B小町舞台！</p>
-            </div>
-            <div class="card">
-                <img src="kana3.jpg" alt="有馬佳奈圖片3">
-                <h3>戲劇挑戰</h3>
-                <p>演技爆發，挑戰極限角色。</p>
-            </div>
+    <!-- 角色經歷 -->
+    <section>
+        <h2>佳奈的經歷</h2>
+        <button class="toggle-button" onclick="toggleContent('exp1')">展開/收起「序章」</button>
+        <div id="exp1" class="toggle-content">
+            <p>從小就被看作頗具演繹才能的少女……（此處略去部分內容，您可自定義）</p>
         </div>
 
-        <!-- 嵌入视频 -->
-        <div id="video" class="video-container">
-            <h2>相關影片</h2>
-            <iframe src="https://www.youtube.com/embed/example" allowfullscreen></iframe>
+        <button class="toggle-button" onclick="toggleContent('exp2')">展開/收起「舞台劇篇」</button>
+        <div id="exp2" class="toggle-content">
+            <p>佳奈通過臨場發揮輕鬆化解，展現了壓倒性的表演能力……（此處略去部分內容，您可自定義）</p>
         </div>
+    </section>
 
-        <!-- 按钮组 -->
-        <div class="button-group">
-            <button class="button" onclick="alert('歡迎支持有馬佳奈！')">支持她</button>
-            <button class="button" onclick="alert('感謝您的瀏覽！')">分享網頁</button>
+    <!-- MV 视频展示 -->
+    <section>
+        <h2>B小町歌曲</h2>
+        <div class="video-container">
+            <h3>POP IN 2【MV short】</h3>
+            <video controls>
+                <source src="POP IN 2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
-    </div>
+    </section>
 
-    <!-- 页脚 -->
-    <div class="footer">
-        <p>© 2025 有馬佳奈粉絲網頁. 設計者：您.</p>
-    </div>
+    <script>
+        // 展开/收起内容功能
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            content.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
+
 
