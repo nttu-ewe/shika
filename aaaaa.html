@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>有馬佳奈介紹</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        #kanaImage {
+            width: 300px;
+            height: auto;
+            transition: transform 0.3s;
+        }
+        #kanaImage:hover {
+            transform: scale(1.1);
+        }
+        #info {
+            display: none;
+            margin: 20px auto;
+            width: 60%;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>有馬佳奈介紹</h1>
+    <img id="kanaImage" src="kana1.jpg" alt="有馬佳奈">
+    <div>
+        <button onclick="toggleInfo()">顯示/隱藏簡介</button>
+        <button onclick="changeImage()">切換圖片</button>
+    </div>
+    <div id="info">
+        <h2>有馬佳奈</h2>
+        <p>有馬佳奈（有馬かな）是漫畫《【我推的孩子】》中的女主角。她自稱為“10秒就能哭出來的天才童星”，在幼年時曾與星野阿庫亞同台演出，對阿庫亞的演技一直耿耿於懷。隨著年齡增長，她逐漸失去了童星時期的光環，但仍在演藝圈努力奮鬥。</p>
+        <p>她是偶像團體B小町的成員，擔任C位，展現出色的舞台表現力和歌唱實力。</p>
+    </div>
+
+    <script>
+        let currentImage = 1;
+        const totalImages = 3; // 總圖片數量
+
+        function toggleInfo() {
+            const infoDiv = document.getElementById('info');
+            if (infoDiv.style.display === 'none' || infoDiv.style.display === '') {
+                infoDiv.style.display = 'block';
+            } else {
+                infoDiv.style.display = 'none';
+            }
+        }
+
+        function changeImage() {
+            currentImage = (currentImage % totalImages) + 1;
+            document.getElementById('kanaImage').src = 'kana' + currentImage + '.jpg';
+        }
+    </script>
+</body>
+</html>
