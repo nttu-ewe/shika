@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>有馬佳奈</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* 全局样式 */
         body, html {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            font-size: 1em;
-            color: #333;
+            font-family: 'Noto Sans TC', sans-serif;
             background: linear-gradient(180deg, #ffe4e1, #fff);
+            color: #333;
+            overflow-x: hidden;
         }
 
         * {
@@ -65,15 +66,16 @@
             gap: 20px;
         }
 
-        .image-grid img {
+        .image-grid img, video {
             width: 100%;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .image-grid img:hover {
+        .image-grid img:hover, video:hover {
             transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.5);
         }
 
         .toggle-content {
@@ -113,6 +115,45 @@
             border-radius: 10px;
         }
 
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .image-switch-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-switch-container img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .image-switch-container button {
+            margin: 10px 5px;
+            padding: 10px 15px;
+            background-color: #ff5773;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .image-switch-container button:hover {
+            background-color: #e9445e;
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -139,7 +180,7 @@
 </head>
 <body>
     <!-- 顶部导航栏 -->
-    <header>
+    <header class="scroll-animate">
         <div>
             <h1>有馬佳奈</h1>
             <p>"我要成為你推的孩子!"</p>
@@ -147,10 +188,20 @@
         <img src="FB_IMG_1732004878589.jpg" alt="佳奈圖片">
     </header>
 
+    <!-- 图片切换 -->
+    <section class="image-switch-container scroll-animate">
+        <h2>圖片切換</h2>
+        <img id="mainImage" src="99e6ccbbe1210deec94cf408ef536d61.jpg" alt="切换图片">
+        <div>
+            <button onclick="switchImage(1)">圖片 1</button>
+            <button onclick="switchImage(2)">圖片 2</button>
+            <button onclick="switchImage(3)">圖片 3</button>
+        </div>
+    </section>
+
     <!-- 角色簡介 -->
-    <section>
+    <section class="scroll-animate">
         <h2>角色簡介</h2>
-        <p>有馬佳奈是人氣漫畫《【我推的孩子】》中的登場角色，以天才童星之名出道，展現了她對舞台和演技的熱忱。</p>
         <div class="image-grid">
             <img src="99e6ccbbe1210deec94cf408ef536d61.jpg" alt="佳奈圖片1">
             <img src="402390c916c78576bbd032304e218c34.jpg" alt="佳奈圖片2">
@@ -159,22 +210,8 @@
         </div>
     </section>
 
-    <!-- 角色經歷 -->
-    <section>
-        <h2>佳奈的經歷</h2>
-        <button class="toggle-button" onclick="toggleContent('exp1')">展開/收起「序章」</button>
-        <div id="exp1" class="toggle-content">
-            <p>從小就被看作頗具演繹才能的少女……（此處略去部分內容，您可自定義）</p>
-        </div>
-
-        <button class="toggle-button" onclick="toggleContent('exp2')">展開/收起「舞台劇篇」</button>
-        <div id="exp2" class="toggle-content">
-            <p>佳奈通過臨場發揮輕鬆化解，展現了壓倒性的表演能力……（此處略去部分內容，您可自定義）</p>
-        </div>
-    </section>
-
     <!-- MV 视频展示 -->
-    <section>
+    <section class="scroll-animate">
         <h2>B小町歌曲</h2>
         <div class="video-container">
             <h3>POP IN 2【MV short】</h3>
@@ -186,13 +223,39 @@
     </section>
 
     <script>
-        // 展开/收起内容功能
-        function toggleContent(id) {
-            const content = document.getElementById(id);
-            content.classList.toggle('active');
+        // 图片切换逻辑
+        const images = [
+            "99e6ccbbe1210deec94cf408ef536d61.jpg",
+            "402390c916c78576bbd032304e218c34.jpg",
+            "410530d4907ac727b817acda128d0dad.jpg"
+        ];
+
+        function switchImage(index) {
+            const mainImage = document.getElementById("mainImage");
+            mainImage.src = images[index - 1];
         }
+
+        // 滚动动画
+        const scrollElements = document.querySelectorAll(".scroll-animate");
+
+        const elementInView = (el, offset = 0) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return elementTop <= (window.innerHeight || document.documentElement.clientHeight) - offset;
+        };
+
+        const displayScrollElement = (element) => {
+            element.classList.add("visible");
+        };
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 50)) {
+                    displayScrollElement(el);
+                }
+            });
+        };
+
+        window.addEventListener("scroll", handleScrollAnimation);
     </script>
 </body>
 </html>
-
-
