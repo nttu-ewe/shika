@@ -66,42 +66,17 @@
             gap: 20px;
         }
 
-        .image-grid img, video {
+        .image-grid img {
             width: 100%;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
+            cursor: pointer;
         }
 
-        .image-grid img:hover, video:hover {
+        .image-grid img:hover {
             transform: scale(1.1);
             box-shadow: 0 10px 30px rgba(255, 105, 180, 0.5);
-        }
-
-        .toggle-content {
-            display: none;
-        }
-
-        .toggle-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        .toggle-button {
-            display: block;
-            margin: 10px auto;
-            padding: 10px 20px;
-            font-size: 1em;
-            background-color: #ff5773;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .toggle-button:hover {
-            background-color: #e9445e;
         }
 
         .video-container {
@@ -113,56 +88,66 @@
             max-width: 800px;
             border: 3px solid #ff69b4;
             border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.5);
         }
 
-        .scroll-animate {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+        .comment-section {
+            margin-top: 40px;
         }
 
-        .scroll-animate.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .image-switch-container {
+        .comment-section h3 {
+            font-size: 2em;
+            color: #FF3196;
             text-align: center;
-            margin: 20px 0;
+            margin-bottom: 20px;
         }
 
-        .image-switch-container img {
-            width: 300px;
-            height: auto;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
 
-        .image-switch-container button {
-            margin: 10px 5px;
-            padding: 10px 15px;
-            background-color: #ff5773;
+        .comment-form textarea {
+            width: 100%;
+            max-width: 600px;
+            height: 100px;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        .comment-form button {
+            padding: 10px 20px;
+            font-size: 1em;
             color: white;
+            background-color: #ff5773;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1em;
             transition: background-color 0.3s ease;
         }
 
-        .image-switch-container button:hover {
+        .comment-form button:hover {
             background-color: #e9445e;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .comments-list {
+            margin-top: 20px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .comments-list li {
+            background: rgba(255, 250, 250, 0.8);
+            border: 1px solid #ffc0cb;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         @media (max-width: 768px) {
@@ -180,7 +165,7 @@
 </head>
 <body>
     <!-- 顶部导航栏 -->
-    <header class="scroll-animate">
+    <header>
         <div>
             <h1>有馬佳奈</h1>
             <p>"我要成為你推的孩子!"</p>
@@ -188,30 +173,19 @@
         <img src="FB_IMG_1732004878589.jpg" alt="佳奈圖片">
     </header>
 
-    <!-- 图片切换 -->
-    <section class="image-switch-container scroll-animate">
-        <h2>圖片切換</h2>
-        <img id="mainImage" src="99e6ccbbe1210deec94cf408ef536d61.jpg" alt="切换图片">
-        <div>
-            <button onclick="switchImage(1)">圖片 1</button>
-            <button onclick="switchImage(2)">圖片 2</button>
-            <button onclick="switchImage(3)">圖片 3</button>
-        </div>
-    </section>
-
-    <!-- 角色簡介 -->
-    <section class="scroll-animate">
-        <h2>角色簡介</h2>
+    <!-- 图片库 -->
+    <section>
+        <h2>圖片庫</h2>
         <div class="image-grid">
-            <img src="99e6ccbbe1210deec94cf408ef536d61.jpg" alt="佳奈圖片1">
-            <img src="402390c916c78576bbd032304e218c34.jpg" alt="佳奈圖片2">
-            <img src="410530d4907ac727b817acda128d0dad.jpg" alt="佳奈圖片3">
-            <img src="a9fbf41d4385499c251f40bf9d20f16c.jpg" alt="佳奈圖片4">
+            <img src="99e6ccbbe1210deec94cf408ef536d61.jpg" alt="佳奈圖片1" data-index="0">
+            <img src="402390c916c78576bbd032304e218c34.jpg" alt="佳奈圖片2" data-index="1">
+            <img src="410530d4907ac727b817acda128d0dad.jpg" alt="佳奈圖片3" data-index="2">
+            <img src="a9fbf41d4385499c251f40bf9d20f16c.jpg" alt="佳奈圖片4" data-index="3">
         </div>
     </section>
 
     <!-- MV 视频展示 -->
-    <section class="scroll-animate">
+    <section>
         <h2>B小町歌曲</h2>
         <div class="video-container">
             <h3>POP IN 2【MV short】</h3>
@@ -222,40 +196,50 @@
         </div>
     </section>
 
+    <!-- 留言板 -->
+    <section class="comment-section">
+        <h3>留言板</h3>
+        <div class="comment-form">
+            <textarea id="commentInput" placeholder="留下您的留言..."></textarea>
+            <button onclick="addComment()">提交留言</button>
+        </div>
+        <ul class="comments-list" id="commentsList"></ul>
+    </section>
+
     <script>
-        // 图片切换逻辑
+        // 图片库点击切换功能
         const images = [
             "99e6ccbbe1210deec94cf408ef536d61.jpg",
             "402390c916c78576bbd032304e218c34.jpg",
-            "410530d4907ac727b817acda128d0dad.jpg"
+            "410530d4907ac727b817acda128d0dad.jpg",
+            "a9fbf41d4385499c251f40bf9d20f16c.jpg"
         ];
 
-        function switchImage(index) {
-            const mainImage = document.getElementById("mainImage");
-            mainImage.src = images[index - 1];
-        }
-
-        // 滚动动画
-        const scrollElements = document.querySelectorAll(".scroll-animate");
-
-        const elementInView = (el, offset = 0) => {
-            const elementTop = el.getBoundingClientRect().top;
-            return elementTop <= (window.innerHeight || document.documentElement.clientHeight) - offset;
-        };
-
-        const displayScrollElement = (element) => {
-            element.classList.add("visible");
-        };
-
-        const handleScrollAnimation = () => {
-            scrollElements.forEach((el) => {
-                if (elementInView(el, 50)) {
-                    displayScrollElement(el);
-                }
+        const imageElements = document.querySelectorAll(".image-grid img");
+        imageElements.forEach(img => {
+            img.addEventListener("click", () => {
+                let currentIndex = parseInt(img.getAttribute("data-index"));
+                let nextIndex = (currentIndex + 1) % images.length;
+                img.src = images[nextIndex];
+                img.setAttribute("data-index", nextIndex);
             });
-        };
+        });
 
-        window.addEventListener("scroll", handleScrollAnimation);
+        // 留言板功能
+        const commentsList = document.getElementById("commentsList");
+        const commentInput = document.getElementById("commentInput");
+
+        function addComment() {
+            const commentText = commentInput.value.trim();
+            if (commentText) {
+                const newComment = document.createElement("li");
+                newComment.textContent = commentText;
+                commentsList.appendChild(newComment);
+                commentInput.value = ""; // 清空输入框
+            } else {
+                alert("請輸入留言內容！");
+            }
+        }
     </script>
 </body>
 </html>
