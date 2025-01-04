@@ -2,80 +2,235 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>有馬佳奈介紹</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* 全局样式 */
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
-        }
-        h1 {
+            font-family: 'Noto Serif TC', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
             color: #333;
         }
-        #kanaImage {
-            width: 300px;
-            height: auto;
+
+        /* 顶部导航栏 */
+        .navbar {
+            background-color: #ff5773;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* 主要内容样式 */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .hero img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 8px;
             transition: transform 0.3s;
         }
-        #kanaImage:hover {
-            transform: scale(1.1);
+
+        .hero img:hover {
+            transform: scale(1.05);
         }
-        #info {
-            display: none;
-            margin: 20px auto;
-            width: 60%;
-            text-align: left;
-            background-color: #fff;
-            padding: 20px;
+
+        .intro {
+            margin-bottom: 30px;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        /* 卡片布局 */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #ffe4e6;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: calc(33.333% - 20px);
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s;
         }
-        button {
-            margin: 10px;
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+            font-size: 20px;
+        }
+
+        /* 嵌入视频 */
+        .video-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* 按钮样式 */
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .button {
             padding: 10px 20px;
             font-size: 16px;
-            cursor: pointer;
+            color: white;
+            background-color: #ff5773;
             border: none;
             border-radius: 5px;
-            background-color: #007bff;
-            color: #fff;
+            cursor: pointer;
             transition: background-color 0.3s;
         }
-        button:hover {
-            background-color: #0056b3;
+
+        .button:hover {
+            background-color: #ff2a4d;
+        }
+
+        /* 页脚样式 */
+        .footer {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .card {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>有馬佳奈介紹</h1>
-    <img id="kanaImage" src="kana1.jpg" alt="有馬佳奈">
-    <div>
-        <button onclick="toggleInfo()">顯示/隱藏簡介</button>
-        <button onclick="changeImage()">切換圖片</button>
-    </div>
-    <div id="info">
-        <h2>有馬佳奈</h2>
-        <p>有馬佳奈（有馬かな）是漫畫《【我推的孩子】》中的女主角。她自稱為“10秒就能哭出來的天才童星”，在幼年時曾與星野阿庫亞同台演出，對阿庫亞的演技一直耿耿於懷。隨著年齡增長，她逐漸失去了童星時期的光環，但仍在演藝圈努力奮鬥。</p>
-        <p>她是偶像團體B小町的成員，擔任C位，展現出色的舞台表現力和歌唱實力。</p>
+    <!-- 导航栏 -->
+    <div class="navbar">
+        <h1>有馬佳奈介紹</h1>
+        <div>
+            <a href="#intro">簡介</a>
+            <a href="#cards">圖片集</a>
+            <a href="#video">相關影片</a>
+        </div>
     </div>
 
-    <script>
-        let currentImage = 1;
-        const totalImages = 3; // 總圖片數量
+    <!-- 内容区域 -->
+    <div class="container">
+        <!-- 主图 -->
+        <div class="hero">
+            <img src="kana_main.jpg" alt="有馬佳奈">
+        </div>
 
-        function toggleInfo() {
-            const infoDiv = document.getElementById('info');
-            if (infoDiv.style.display === 'none' || infoDiv.style.display === '') {
-                infoDiv.style.display = 'block';
-            } else {
-                infoDiv.style.display = 'none';
-            }
-        }
+        <!-- 简介 -->
+        <div id="intro" class="intro">
+            <h2>簡介</h2>
+            <p>
+                有馬佳奈（有馬かな），是一位以優秀演技和歌聲著稱的偶像角色，來自人氣漫畫《【我推的孩子】》。她曾是天才童星，
+                對舞台和表演抱有極大熱忱。無論是童年的演藝經歷還是偶像生涯，都充滿挑戰和成長。
+            </p>
+        </div>
 
-        function changeImage() {
-            currentImage = (currentImage % totalImages) + 1;
-            document.getElementById('kanaImage').src = 'kana' + currentImage + '.jpg';
-        }
-    </script>
+        <!-- 卡片区 -->
+        <div id="cards" class="cards">
+            <div class="card">
+                <img src="kana1.jpg" alt="有馬佳奈圖片1">
+                <h3>童年時期</h3>
+                <p>天才童星的華麗表演瞬間。</p>
+            </div>
+            <div class="card">
+                <img src="kana2.jpg" alt="有馬佳奈圖片2">
+                <h3>偶像舞台</h3>
+                <p>熱血沸騰的B小町舞台！</p>
+            </div>
+            <div class="card">
+                <img src="kana3.jpg" alt="有馬佳奈圖片3">
+                <h3>戲劇挑戰</h3>
+                <p>演技爆發，挑戰極限角色。</p>
+            </div>
+        </div>
+
+        <!-- 嵌入视频 -->
+        <div id="video" class="video-container">
+            <h2>相關影片</h2>
+            <iframe src="https://www.youtube.com/embed/example" allowfullscreen></iframe>
+        </div>
+
+        <!-- 按钮组 -->
+        <div class="button-group">
+            <button class="button" onclick="alert('歡迎支持有馬佳奈！')">支持她</button>
+            <button class="button" onclick="alert('感謝您的瀏覽！')">分享網頁</button>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <p>© 2025 有馬佳奈粉絲網頁. 設計者：您.</p>
+    </div>
 </body>
 </html>
+
