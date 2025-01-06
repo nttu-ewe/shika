@@ -3,59 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>有馬佳奈 | Fan Page</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>視覺落差效果</title>
     <style>
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden; /* 禁止水平滾動 */
         }
 
+        /* 背景圖設定 */
         .parallax {
-            height: 100vh;
+            position: fixed; /* 固定背景圖 */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: url('99e6ccbbe1210deec94cf408ef536d61.jpg'); /* 確保圖片路徑正確 */
             background-size: cover;
-            background-position: center;
             background-repeat: no-repeat;
-            background-attachment: scroll; /* 使用 scroll 以便配合 JavaScript 實現滾動效果 */
+            background-position: center top;
+            z-index: -1; /* 背景放在最底層 */
         }
 
+        /* 前景內容 */
         .content {
-            height: 200vh;
-            background-color: #f4f4f4;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            position: relative; /* 為了層級管理 */
+            z-index: 1;
+            width: 100%;
+            padding: 50px 20px;
         }
 
-        h1, h2 {
-            margin: 0;
+        .section {
+            background: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
+            margin: 20px auto;
             padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 增加陰影以提高可讀性 */
+        }
+
+        .section h1 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        /* 讓背景隨滾動效果 */
+        .scroll {
+            height: 200vh; /* 增加內容高度以便滾動 */
         }
     </style>
 </head>
 <body>
-    <!-- 視覺落差背景 -->
+    <!-- 背景圖 -->
     <div class="parallax"></div>
+
+    <!-- 內容區域 -->
     <div class="content">
-        <h1>網頁內容區域</h1>
-        <p>滾動網頁時，背景圖片將以較慢速度移動。</p>
-        <p>增加更多的內容來觀察滾動效果！</p>
+        <div class="section">
+            <h1>標題：背景不被遮擋</h1>
+            <p>這段內容區域有半透明的白色背景，可以同時看到背景圖和清晰的文字。</p>
+        </div>
+        <div class="section">
+            <h1>滾動效果展示</h1>
+            <p>隨著滾動，背景圖會從上到下移動，整體效果平滑且不被遮擋。</p>
+        </div>
+        <div class="scroll"></div> <!-- 增加滾動空間 -->
     </div>
 
     <script>
-        // JavaScript 滾動效果
+        // JavaScript 控制背景滾動
         document.addEventListener('scroll', () => {
             const parallax = document.querySelector('.parallax');
             const scrollPosition = window.scrollY;
 
-            // 設置背景滾動速度
-            const parallaxSpeed = 0.5;
-            parallax.style.backgroundPositionY = `${scrollPosition * parallaxSpeed}px`;
+            // 控制背景移動速率
+            parallax.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
         });
     </script>
 </body>
