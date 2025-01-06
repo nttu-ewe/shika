@@ -162,7 +162,7 @@
             <h1 class="title">有馬佳奈</h1>
             <h2 class="subtitle">溫柔與成長的物語</h2>
         </div>
-        <img src="hero-image.jpg" alt="Kana Arima" class="hero-image">
+        <img src="4bc660b88060cfbaf4acb461bab5ecbd.jpg" alt="Kana Arima" class="hero-image">
     </div>
 
     <nav class="navbar">
@@ -236,7 +236,7 @@
         <div class="card">
             <h2>圖片庫</h2>
             <div class="image-gallery">
-                <img src="image1.jpg" alt="Kana Image 1" id="current-image">
+                <img src="402390c916c78576bbd032304e218c34.jpg" alt="Kana Image 1" id="current-image">
                 <button id="next-image">下一張</button>
             </div>
         </div>
@@ -279,7 +279,7 @@
         });
 
         let currentImageIndex = 0;
-        const images = ['image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg', 'image5.jpg'];
+        const images = ['402390c916c78576bbd032304e218c34.jpg', '410530d4907ac727b817acda128d0dad.jpg', 'image3.jpg', 'image4.jpg', 'image5.jpg'];
         const galleryImage = document.getElementById('current-image');
         document.getElementById('next-image').addEventListener('click', () => {
             currentImageIndex = (currentImageIndex + 1) % images.length;
@@ -299,41 +299,6 @@
                 textarea.value = '';
             }
         });
-
-// 取得 HTML 元素
-        const commentForm = document.getElementById('comment-form');
-        const commentInput = document.getElementById('comment-input');
-        const commentList = document.getElementById('comment-list');
-
-        // 初始化留言功能
-        commentForm.addEventListener('submit', (event) => {
-            event.preventDefault(); // 防止表單重新加載頁面
-
-            // 獲取用戶輸入的留言內容
-            const commentText = commentInput.value.trim();
-
-            // 檢查是否有內容
-            if (commentText === '') {
-                alert('留言不可為空！');
-                return;
-            }
-
-            // 建立新的留言元素
-            const newComment = document.createElement('div');
-            newComment.classList.add('comment-item');
-            newComment.innerHTML = `<p>${commentText}</p>`;
-
-            // 添加新留言到留言列表
-            if (commentList.querySelector('p')) {
-                // 如果有 "目前沒有留言" 的訊息，移除它
-                commentList.innerHTML = '';
-            }
-            commentList.appendChild(newComment);
-
-            // 清空輸入框
-            commentInput.value = '';
-        });
-
     </script>
 </body>
 </html>
