@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
     <style>
-        body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    background: url('99e6ccbbe1210deec94cf408ef536d61.jpg') no-repeat center top;
-    background-size: cover;
-    color: #fff;
-    overflow-x: hidden;
-}
+       
 
-        
+          body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: url('99e6ccbbe1210deec94cf408ef536d61.jpg') no-repeat center center;
+            background-attachment: fixed;
+            background-size: 669px 1429px;
+            color: #fff;
+        }
       
 
 
@@ -190,6 +190,24 @@
 .play-button:hover {
     background: #0056b3;
 }
+
+/* 留言區新增樣式 */
+#comment-list {
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.comment-item {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 
 /* 留言區樣式 */
 .comment-section {
@@ -400,7 +418,7 @@ textarea {
             </div>
         </div>
     </section>
-    
+
     <footer>
         <p>&copy; 2025 有馬佳奈粉絲網頁</p>
     </footer>
@@ -459,6 +477,41 @@ submitComment.addEventListener('click', () => {
     }
 });
 
+// 切換經歷細節顯示
+document.querySelectorAll('.toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        const details = toggle.nextElementSibling;
+        details.style.display = details.style.display === 'block' ? 'none' : 'block';
+    });
+});
+
+// 圖片庫功能
+let currentImageIndex = 0;
+const images = ['image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg', 'image5.jpg'];
+const galleryImage = document.getElementById('current-image');
+document.getElementById('next-image').addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    galleryImage.src = images[currentImageIndex];
+});
+
+// 留言區功能
+const commentForm = document.getElementById('comment-form');
+const commentList = document.getElementById('comment-list');
+
+commentForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const textarea = commentForm.querySelector('textarea');
+    const commentText = textarea.value.trim();
+
+    if (commentText) {
+        // 移除初始提示文字（如果存在）
+        const noCommentMessage = commentList.querySelector('p');
+        if (noCommentMessage) {
+            noCommentMessage.remove();
+        }
+
+        // 添加新留言
+        const newComment
 
 
     </script>
