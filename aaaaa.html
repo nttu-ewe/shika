@@ -11,8 +11,9 @@
         body {
             margin: 0;
             font-family: 'Roboto', sans-serif;
-            background: url('99e6ccbbe1210deec94cf408ef536d61.jpg') no-repeat center center fixed;
-            background-size: cover;
+            background: url('99e6ccbbe1210deec94cf408ef536d61.jpg') no-repeat center center;
+            background-attachment: fixed;
+            background-size: 669px 1429px;
             color: #fff;
         }
         .hero {
@@ -161,7 +162,7 @@
             <h1 class="title">有馬佳奈</h1>
             <h2 class="subtitle">溫柔與成長的物語</h2>
         </div>
-        <img src="hero-image.jpg" alt="Kana Arima" class="hero-image">
+        <img src="4bc660b88060cfbaf4acb461bab5ecbd.jpg" alt="Kana Arima" class="hero-image">
     </div>
 
     <nav class="navbar">
@@ -204,6 +205,24 @@
                     </div>
                 </div>
                 <div class="period">
+                    <h3 class="toggle">初入職場</h3>
+                    <div class="details">
+                        <p>佳奈初次參與影視拍攝時表現出優異的表演潛力...</p>
+                    </div>
+                </div>
+                <div class="period">
+                    <h3 class="toggle">成功之路</h3>
+                    <div class="details">
+                        <p>在多次成功的表演之後，佳奈逐漸成為炙手可熱的明星...</p>
+                    </div>
+                </div>
+                <div class="period">
+                    <h3 class="toggle">獨立挑戰</h3>
+                    <div class="details">
+                        <p>佳奈開始進行更加自主的藝術探索，並挑戰複雜的角色...</p>
+                    </div>
+                </div>
+                <div class="period">
                     <h3 class="toggle">現在</h3>
                     <div class="details">
                         <p>如今，佳奈已經成為影視界一顆閃亮的明星...</p>
@@ -217,7 +236,7 @@
         <div class="card">
             <h2>圖片庫</h2>
             <div class="image-gallery">
-                <img src="image1.jpg" alt="Kana Image 1">
+                <img src="402390c916c78576bbd032304e218c34.jpg" alt="Kana Image 1" id="current-image">
                 <button id="next-image">下一張</button>
             </div>
         </div>
@@ -260,8 +279,8 @@
         });
 
         let currentImageIndex = 0;
-        const images = ['image1.jpg', 'image2.jpg', 'image3.jpg'];
-        const galleryImage = document.querySelector('.image-gallery img');
+        const images = ['402390c916c78576bbd032304e218c34.jpg', '410530d4907ac727b817acda128d0dad.jpg', 'a9fbf41d4385499c251f40bf9d20f16c.jpg', 'image4.jpg', 'image5.jpg'];
+        const galleryImage = document.getElementById('current-image');
         document.getElementById('next-image').addEventListener('click', () => {
             currentImageIndex = (currentImageIndex + 1) % images.length;
             galleryImage.src = images[currentImageIndex];
