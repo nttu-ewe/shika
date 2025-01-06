@@ -8,16 +8,17 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
     <style>
-        
-        
         body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background: url('99e6ccbbe1210deec94cf408ef536d61.jpg') no-repeat center top;
-            background-size: 669px 1429px;
-            color: #fff;
-            overflow-x: hidden;
-        }
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: url('99e6ccbbe1210deec94cf408ef536d61.jpg') no-repeat center top;
+    background-size: cover;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+        
+      
 
 
         .hero {
@@ -304,11 +305,18 @@
             }
         });
 
-        window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY; // 獲取滾動的垂直距離
-    const speedFactor = 0.5; // 背景滾動速度比例，值越小速度越慢
-    document.body.style.backgroundPosition = `center ${-scrollY * speedFactor}px`;
+        
+document.addEventListener('scroll', () => {
+    const scrollY = window.scrollY; // 獲取頁面滾動高度
+    const bodyHeight = document.body.scrollHeight - window.innerHeight; // 總頁面高度
+    const imageHeight = 1429; // 背景圖片實際高度
+    const speedFactor = (imageHeight - window.innerHeight) / bodyHeight; // 自動計算滾動比例
+
+    // 更新背景圖位置
+    document.body.style.backgroundPosition = `center ${scrollY * speedFactor}px`;
 });
+
+
 
     </script>
 </body>
