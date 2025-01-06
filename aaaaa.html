@@ -5,329 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>有馬佳奈 | Fan Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
     <style>
-       
-
         body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-.parallax {
-  height: 100vh; /* 占滿可視區域高度 */
-  background-image: url('99e6ccbbe1210deec94cf408ef536d61.jpg'); /* 替換為實際圖片檔案路徑 */
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.content {
-  height: 200vh; /* 增加頁面高度以便滾動 */
-  background-color: #f4f4f4;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 100vh;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            animation: fadeIn 2s ease-in;
-        }
-        .hero-content {
-            max-width: 50%;
-        }
-        .title {
-            font-size: 3rem;
             margin: 0;
-            animation: slideIn 1s ease-in-out;
-        }
-        .subtitle {
-            font-size: 1.5rem;
-            margin: 10px 0;
-            animation: fadeIn 2s ease-in;
-        }
-        .hero-image {
-            max-width: 40%;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-        .hero-image:hover {
-            transform: scale(1.1);
-        }
-        .navbar {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .navbar ul {
-            display: flex;
-            list-style: none;
             padding: 0;
-            margin: 0;
-            justify-content: center;
+            height: 100%;
+            font-family: 'Roboto', sans-serif;
         }
-        .navbar ul li {
-            margin: 0 15px;
+
+        .parallax {
+            height: 100vh;
+            background-image: url('99e6ccbbe1210deec94cf408ef536d61.jpg'); /* 確保圖片路徑正確 */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: scroll; /* 使用 scroll 以便配合 JavaScript 實現滾動效果 */
         }
-        .navbar ul li a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .navbar ul li a:hover {
-            color: #f0a500;
-        }
-        .section {
-            padding: 50px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            margin: 20px;
-            border-radius: 10px;
-            transition: transform 0.3s, opacity 0.3s;
-        }
-        .section:hover {
-            transform: scale(1.02);
-            opacity: 0.95;
-        }
-        .card {
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
-        }
-        .list li {
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        .list li:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateX(10px);
-        }
-        .timeline .period {
-            margin-bottom: 20px;
-        }
-        .timeline .toggle {
-            cursor: pointer;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .timeline .details {
-            display: none;
-            margin: 10px 0 0 10px;
-        }
-        .image-gallery {
-            text-align: center;
-        }
-        .image-gallery img {
-            max-width: 90%;
-            border-radius: 10px;
-        }
-        .videos video {
-            display: block;
-            margin: 20px auto;
-            width: 90%;
-            border-radius: 10px;
-        }
-        #comment-form {
+
+        .content {
+            height: 200vh;
+            background-color: #f4f4f4;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
-        #comment-form textarea {
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            resize: none;
-        }
-        #comment-list {
-            margin-top: 20px;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideIn {
-            from { transform: translateX(-100%); }
-            to { transform: translateX(0); }
-        }
-        @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-            .hero-image {
-                max-width: 90%;
-            }
+
+        h1, h2 {
+            margin: 0;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="hero" id="home">
-        <div class="hero-content">
-            <h1 class="title">有馬佳奈</h1>
-            <h2 class="subtitle">溫柔與成長的物語</h2>
-        </div>
-        <img src="hero-image.jpg" alt="Kana Arima" class="hero-image">
+    <!-- 視覺落差背景 -->
+    <div class="parallax"></div>
+    <div class="content">
+        <h1>網頁內容區域</h1>
+        <p>滾動網頁時，背景圖片將以較慢速度移動。</p>
+        <p>增加更多的內容來觀察滾動效果！</p>
     </div>
 
-    <nav class="navbar">
-        <ul>
-            <li><a href="#profile">個人檔案</a></li>
-            <li><a href="#timeline">經歷</a></li>
-            <li><a href="#gallery">圖片庫</a></li>
-            <li><a href="#videos">影片</a></li>
-            <li><a href="#comments">留言板</a></li>
-        </ul>
-    </nav>
-
-    <section id="profile" class="section">
-        <div class="card">
-            <h2>個人檔案</h2>
-            <ul class="list">
-                <li><strong>角色名稱：</strong>有馬佳奈</li>
-                <li><strong>年齡：</strong>18 歲</li>
-                <li><strong>性格：</strong>堅強、溫柔且專注</li>
-                <li><strong>興趣：</strong>表演與歌唱</li>
-                <li><strong>夢想：</strong>成為頂尖的演員</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="timeline" class="section">
-        <div class="card">
-            <h2>經歷</h2>
-            <div class="timeline">
-                <div class="period">
-                    <h3 class="toggle">童年時期</h3>
-                    <div class="details">
-                        <p>在早期的生活中，佳奈表現出非凡的表演才能...</p>
-                    </div>
-                </div>
-                <div class="period">
-                    <h3 class="toggle">青少年時期</h3>
-                    <div class="details">
-                        <p>隨著年齡增長，佳奈逐步開始挑戰更具深度的角色...</p>
-                    </div>
-                </div>
-                <div class="period">
-                    <h3 class="toggle">初入職場</h3>
-                    <div class="details">
-                        <p>佳奈初次參與影視拍攝時表現出優異的表演潛力...</p>
-                    </div>
-                </div>
-                <div class="period">
-                    <h3 class="toggle">成功之路</h3>
-                    <div class="details">
-                        <p>在多次成功的表演之後，佳奈逐漸成為炙手可熱的明星...</p>
-                    </div>
-                </div>
-                <div class="period">
-                    <h3 class="toggle">獨立挑戰</h3>
-                    <div class="details">
-                        <p>佳奈開始進行更加自主的藝術探索，並挑戰複雜的角色...</p>
-                    </div>
-                </div>
-                <div class="period">
-                    <h3 class="toggle">現在</h3>
-                    <div class="details">
-                        <p>如今，佳奈已經成為影視界一顆閃亮的明星...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="gallery" class="section">
-        <div class="card">
-            <h2>圖片庫</h2>
-            <div class="image-gallery">
-                <img src="image1.jpg" alt="Kana Image 1" id="current-image">
-                <button id="next-image">下一張</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="videos" class="section">
-        <div class="card">
-            <h2>影片</h2>
-            <div class="videos">
-                <video controls src="video1.mp4"></video>
-                <video controls src="video2.mp4"></video>
-                <video controls src="video3.mp4"></video>
-            </div>
-        </div>
-    </section>
-
-    <section id="comments" class="section">
-        <div class="card">
-            <h2>留言板</h2>
-            <form id="comment-form">
-                <textarea placeholder="留下你的留言..."></textarea>
-                <button type="submit">送出</button>
-            </form>
-            <div id="comment-list">
-                <p>目前尚無留言，成為第一個留言的人吧！</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 有馬佳奈粉絲網頁</p>
-    </footer>
-
     <script>
-        document.querySelectorAll('.toggle').forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                const details = toggle.nextElementSibling;
-                details.style.display = details.style.display === 'block' ? 'none' : 'block';
-            });
-        });
-
-        let currentImageIndex = 0;
-        const images = ['image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg', 'image5.jpg'];
-        const galleryImage = document.getElementById('current-image');
-        document.getElementById('next-image').addEventListener('click', () => {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            galleryImage.src = images[currentImageIndex];
-        });
-
-        const commentForm = document.getElementById('comment-form');
-        const commentList = document.getElementById('comment-list');
-
-        commentForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const textarea = commentForm.querySelector('textarea');
-            if (textarea.value.trim()) {
-                const newComment = document.createElement('p');
-                newComment.textContent = textarea.value;
-                commentList.appendChild(newComment);
-                textarea.value = '';
-            }
-        });
-
+        // JavaScript 滾動效果
         document.addEventListener('scroll', () => {
-  const parallax = document.querySelector('.parallax');
-  const scrollPosition = window.scrollY;
+            const parallax = document.querySelector('.parallax');
+            const scrollPosition = window.scrollY;
 
-  // 調整背景位置速率（例如：0.5 表示速度為滾動速度的一半）
-  const parallaxSpeed = 0.5;
-  parallax.style.backgroundPositionY = `${scrollPosition * parallaxSpeed}px`;
-});
-
+            // 設置背景滾動速度
+            const parallaxSpeed = 0.5;
+            parallax.style.backgroundPositionY = `${scrollPosition * parallaxSpeed}px`;
+        });
     </script>
 </body>
 </html>
+
