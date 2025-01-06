@@ -10,16 +10,30 @@
     <style>
        
 
-          body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background: url('99e6ccbbe1210deec94cf408ef536d61.jpg') no-repeat center center;
-            background-attachment: fixed;
-            background-size: 669px 1429px;
-            color: #fff;
-        }
-      
+        body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
 
+.parallax {
+  height: 100vh; /* 占滿可視區域高度 */
+  background-image: url('99e6ccbbe1210deec94cf408ef536d61.jpg'); /* 替換為實際圖片檔案路徑 */
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.content {
+  height: 200vh; /* 增加頁面高度以便滾動 */
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
 
         .hero {
             display: flex;
@@ -128,134 +142,6 @@
             width: 90%;
             border-radius: 10px;
         }
-
-
-/* 專輯樣式 */
-.album-section {
-    margin-bottom: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.album {
-    display: flex;
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    max-width: 800px;
-    width: 100%;
-}
-
-.album-cover {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-}
-
-.album-details {
-    padding: 20px;
-}
-
-.album-details h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.album-details p {
-    margin-bottom: 20px;
-}
-
-.tracklist {
-    list-style: none;
-    padding: 0;
-}
-
-.tracklist li {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.play-button {
-    background: #007bff;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.play-button:hover {
-    background: #0056b3;
-}
-
-/* 留言區新增樣式 */
-#comment-list {
-    margin-top: 20px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-}
-
-.comment-item {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-
-/* 留言區樣式 */
-.comment-section {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-textarea {
-    width: 100%;
-    height: 100px;
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    resize: none;
-}
-
-#submit-comment {
-    background: #28a745;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#submit-comment:hover {
-    background: #218838;
-}
-
-#comment-list {
-    margin-top: 20px;
-}
-
-.comment {
-    background: #f9f9f9;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-
         #comment-form {
             display: flex;
             flex-direction: column;
@@ -295,7 +181,7 @@ textarea {
             <h1 class="title">有馬佳奈</h1>
             <h2 class="subtitle">溫柔與成長的物語</h2>
         </div>
-        <img src="4bc660b88060cfbaf4acb461bab5ecbd.jpg" alt="Kana Arima" class="hero-image">
+        <img src="hero-image.jpg" alt="Kana Arima" class="hero-image">
     </div>
 
     <nav class="navbar">
@@ -369,7 +255,7 @@ textarea {
         <div class="card">
             <h2>圖片庫</h2>
             <div class="image-gallery">
-                <img src="402390c916c78576bbd032304e218c34.jpg" alt="Kana Image 1" id="current-image">
+                <img src="image1.jpg" alt="Kana Image 1" id="current-image">
                 <button id="next-image">下一張</button>
             </div>
         </div>
@@ -382,26 +268,6 @@ textarea {
                 <video controls src="video1.mp4"></video>
                 <video controls src="video2.mp4"></video>
                 <video controls src="video3.mp4"></video>
-            </div>
-        </div>
-    </section>
-
-<section class="album-section">
-        <div class="album">
-            <img src="album-cover.jpg" alt="Album Cover" class="album-cover">
-            <div class="album-details">
-                <h2>專輯名稱：My Favorite Album</h2>
-                <p>歌手：John Doe</p>
-                <ul class="tracklist">
-                    <li>
-                        <span>歌曲 1 - Lovely Day</span>
-                        <button class="play-button" data-audio="song1.mp3">播放</button>
-                    </li>
-                    <li>
-                        <span>歌曲 2 - Endless Nights</span>
-                        <button class="play-button" data-audio="song2.mp3">播放</button>
-                    </li>
-                </ul>
             </div>
         </div>
     </section>
@@ -432,7 +298,7 @@ textarea {
         });
 
         let currentImageIndex = 0;
-        const images = ['402390c916c78576bbd032304e218c34.jpg', '410530d4907ac727b817acda128d0dad.jpg', 'a9fbf41d4385499c251f40bf9d20f16c.jpg', 'image4.jpg', 'image5.jpg'];
+        const images = ['image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg', 'image5.jpg'];
         const galleryImage = document.getElementById('current-image');
         document.getElementById('next-image').addEventListener('click', () => {
             currentImageIndex = (currentImageIndex + 1) % images.length;
@@ -453,66 +319,14 @@ textarea {
             }
         });
 
-        // 撥放按鈕功能
-document.querySelectorAll('.play-button').forEach(button => {
-    button.addEventListener('click', () => {
-        const audio = new Audio(button.dataset.audio);
-        audio.play();
-    });
+        document.addEventListener('scroll', () => {
+  const parallax = document.querySelector('.parallax');
+  const scrollPosition = window.scrollY;
+
+  // 調整背景位置速率（例如：0.5 表示速度為滾動速度的一半）
+  const parallaxSpeed = 0.5;
+  parallax.style.backgroundPositionY = `${scrollPosition * parallaxSpeed}px`;
 });
-
-// 留言功能
-const commentInput = document.getElementById('comment-input');
-const submitComment = document.getElementById('submit-comment');
-const commentList = document.getElementById('comment-list');
-
-submitComment.addEventListener('click', () => {
-    const commentText = commentInput.value.trim();
-    if (commentText) {
-        const commentDiv = document.createElement('div');
-        commentDiv.className = 'comment';
-        commentDiv.textContent = commentText;
-        commentList.appendChild(commentDiv);
-        commentInput.value = ''; // 清空輸入框
-    }
-});
-
-// 切換經歷細節顯示
-document.querySelectorAll('.toggle').forEach(toggle => {
-    toggle.addEventListener('click', () => {
-        const details = toggle.nextElementSibling;
-        details.style.display = details.style.display === 'block' ? 'none' : 'block';
-    });
-});
-
-// 圖片庫功能
-let currentImageIndex = 0;
-const images = ['image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg', 'image5.jpg'];
-const galleryImage = document.getElementById('current-image');
-document.getElementById('next-image').addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex + 1) % images.length;
-    galleryImage.src = images[currentImageIndex];
-});
-
-// 留言區功能
-const commentForm = document.getElementById('comment-form');
-const commentList = document.getElementById('comment-list');
-
-commentForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const textarea = commentForm.querySelector('textarea');
-    const commentText = textarea.value.trim();
-
-    if (commentText) {
-        // 移除初始提示文字（如果存在）
-        const noCommentMessage = commentList.querySelector('p');
-        if (noCommentMessage) {
-            noCommentMessage.remove();
-        }
-
-        // 添加新留言
-        const newComment
-
 
     </script>
 </body>
